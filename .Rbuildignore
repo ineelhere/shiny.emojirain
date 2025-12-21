@@ -1,0 +1,10 @@
+^renv$
+^renv\.lock$
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.github$
+^docs$
+^_pkgdown\.yml$
+^check\.R$
+^regen\.R$
+^regen_docs\.R$
