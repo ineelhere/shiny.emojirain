@@ -9,3 +9,4 @@
 ^regen\.R$
 ^regen_docs\.R$
 ^pkgdown/
+app.R
