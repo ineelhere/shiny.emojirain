@@ -14,8 +14,9 @@ interactive tools, and web applications.
 # [LIVE DEMO](ttps://ineelhere-shiny-emojirain.share.connect.posit.cloud/)
 
 **Experience the package in action** with this **RShiny** application -
-<https://ineelhere-shiny-emojirain.share.connect.posit.cloud/> \## 📋
-Table of Contents
+<https://ineelhere-shiny-emojirain.share.connect.posit.cloud/>
+
+## 📋 Table of Contents
 
 - [Features](#id_-features)
 - [Installation](#id_-installation)
