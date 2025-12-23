@@ -5,9 +5,9 @@
 #' Perfect for celebrations, holidays, milestones, and special events!
 #'
 #' @param emojis Character vector of emoji characters or image URLs to display.
-#'        Defaults to Christmas emojis. Use [emoji_presets()] for pre-made collections
+#'        Defaults to Christmas emojis (if NULL). Use [emoji_presets()] for pre-made collections
 #'        or provide your own custom emojis. Supports: Unicode emoji characters
-#'        (e.g., "🎉", "🎄"), web image URLs (http://, https://), data URIs,
+#'        (e.g., actual emoji symbols), web image URLs (http://, https://), data URIs,
 #'        local file paths, and files with extensions (.jpg, .png, .gif, .webp, .svg).
 #'        Emojis will be randomly selected from this vector during animation.
 #' @param trigger Character string specifying when to trigger the animation.
@@ -25,7 +25,7 @@
 #' @param spin_speed Numeric or NULL. Rotation speed in degrees per animation frame.
 #'        Controls the spin effect applied to particles. Set to a numeric value
 #'        (recommended: 1-5) to enable rotation, or NULL to disable rotation (default).
-#'        Higher values create faster spins. Works great with emojis like 💫, ⭐, 🌟.
+#'        Higher values create faster spins. Works great with spinning or star emojis.
 #' @param particle_count Numeric. Number of emoji/image particles emitted per burst.
 #'        More particles create a denser shower effect but use more resources.
 #'        Valid range: 5-30. Default: 15. Adjust based on your audience's device capabilities.
@@ -36,14 +36,18 @@
 #' @param image_size Numeric. Size of images in pixels (applies only to image URLs, not emojis).
 #'        Controls the width and height of rendered images. Valid range: 16-256 pixels.
 #'        Default: 32. Emoji characters scale automatically; this only affects external images.
+#' @param z_index Numeric. CSS z-index for the animation layer. Default: 9999.
+#'        Ensure this is high enough to appear on top of other elements.
+#' @param opacity Numeric. Opacity of the particles (0.0 to 1.0). Default: 1.
+#' @param min_size Numeric. Minimum font size for emoji particles in pixels. Default: 20.
+#' @param max_size Numeric. Maximum font size for emoji particles in pixels. Default: 35.
+#' @param wind Numeric. Horizontal drift bias. Positive values blow right, negative left. Default: 0.
 #'
-#' @return A Shiny tag (head tag) with embedded HTML and JavaScript code
-#'        that initializes the emoji shower animation. This is meant to be included
-#'        in your Shiny UI definition.
+#' @return A Shiny tag list containing the necessary HTML dependencies and initialization script.
 #'
 #' @details
 #' ## Rendering and Performance
-#' The shower is rendered as a fixed overlay (z-index: 9999) that covers the entire
+#' The shower is rendered as a fixed overlay that covers the entire
 #' viewport without interfering with page interactions (pointer-events: none).
 #' All DOM elements are automatically cleaned up after animation completes,
 #' ensuring no memory leaks or lingering elements.
@@ -51,7 +55,7 @@
 #' ## Content Types Supported
 #' The function supports three types of content:
 #' - **Emojis**: Unicode emoji characters ("🎉", "🎄", "❤️", etc.)
-#'   Font size varies between 20-35px for visual variety.
+#'   Font size varies between `min_size` and `max_size` for visual variety.
 #' - **Web Images**: URLs starting with "http://", "https://", or "data:" URIs.
 #'   Perfect for custom branding or special images. Uses the `image_size` parameter.
 #' - **Local Files**: Relative or absolute paths to image files (.jpg, .png, .gif,
@@ -60,13 +64,32 @@
 #' ## Physics
 #' Particles start at the top (y = -50) and fall downward with:
 #' - Vertical velocity determined by `fall_speed`
-#' - Horizontal drift from random velocities (-0.3 to 0.3 per frame)
+#' - Horizontal drift from random velocities plus `wind` bias
 #' - Optional rotation at the rate specified by `spin_speed`
 #' - Automatic respawn when particles exit the bottom of the viewport
 #'
 #' ## Integration with Server Control
 #' For advanced customization, combine with [setup_emoji_handler()] and
 #' [emit_shower()] to trigger showers from server-side events.
+#'
+#' @note
+#' ## Experimental Feature: External Image Support
+#' The ability to render external images (JPEG, PNG, GIF, WebP, SVG) is currently 
+#' available as an **experimental feature**. While functional, be aware that:
+#' 
+#' - **Asynchronous Loading**: External images load asynchronously. Depending on network 
+#'   conditions and file size, images may require additional time to render after the 
+#'   animation begins. For optimal results, use appropriately sized images (32-128px 
+#'   recommended for the `image_size` parameter).
+#' 
+#' - **Reliability Considerations**: Image rendering success may vary based on network 
+#'   latency, CORS policies of the image host, browser caching behavior, and server 
+#'   response times.
+#' 
+#' **Recommendation**: For production environments requiring guaranteed visual consistency, 
+#' use Unicode emoji characters instead of external image files. Emojis render immediately 
+#' without external dependencies and provide superior reliability across all user sessions. 
+#' If using external images, consider implementing fallback emojis for enhanced robustness.
 #'
 #' @examples
 #' \dontrun{
@@ -78,27 +101,15 @@
 #'   h1("Welcome!")
 #' )
 #' 
-#' # With custom emojis
+#' # With custom emojis and wind
 #' ui <- fluidPage(
 #'   emoji_shower_ui(
 #'     emojis = emoji_presets()$halloween,
 #'     trigger = NULL,
-#'     spin_speed = 3
+#'     spin_speed = 3,
+#'     wind = 0.2
 #'   ),
 #'   actionButton("trigger", "Halloween Party!")
-#' )
-#' 
-#' # With image URLs
-#' ui <- fluidPage(
-#'   emoji_shower_ui(
-#'     emojis = c(
-#'       "https://example.com/star.png",
-#'       "https://example.com/heart.gif"
-#'     ),
-#'     image_size = 48,
-#'     trigger = NULL
-#'   ),
-#'   actionButton("trigger", "Image Shower!")
 #' )
 #' }
 #'
@@ -111,173 +122,61 @@ emoji_shower_ui <- function(
   spin_speed = NULL,
   particle_count = 15,
   burst_count = 8,
-  image_size = 32
+  image_size = 32,
+  z_index = 9999,
+  opacity = 1,
+  min_size = 20,
+  max_size = 35,
+  wind = 0
 ) {
   
   # Validate inputs
-  if (!is.numeric(duration) || duration < 500) {
-    stop("duration must be numeric and >= 500 ms", call. = FALSE)
-  }
-  
-  if (!is.numeric(fall_speed) || fall_speed <= 0) {
-    stop("fall_speed must be positive numeric", call. = FALSE)
-  }
-  
-  if (!is.null(spin_speed) && (!is.numeric(spin_speed) || spin_speed <= 0)) {
-    stop("spin_speed must be positive numeric or NULL", call. = FALSE)
-  }
-  
-  if (!is.numeric(particle_count) || particle_count < 1) {
-    stop("particle_count must be positive numeric", call. = FALSE)
-  }
-  
-  if (!is.numeric(burst_count) || burst_count < 1) {
-    stop("burst_count must be positive numeric", call. = FALSE)
-  }
-  
-  if (!is.numeric(image_size) || image_size < 16 || image_size > 256) {
-    stop("image_size must be numeric between 16 and 256", call. = FALSE)
-  }
+  if (!is.numeric(duration) || duration < 500) stop("duration must be numeric and >= 500 ms", call. = FALSE)
+  if (!is.numeric(fall_speed) || fall_speed <= 0) stop("fall_speed must be positive numeric", call. = FALSE)
+  if (!is.null(spin_speed) && (!is.numeric(spin_speed) || spin_speed <= 0)) stop("spin_speed must be positive numeric or NULL", call. = FALSE)
+  if (!is.numeric(particle_count) || particle_count < 1) stop("particle_count must be positive numeric", call. = FALSE)
+  if (!is.numeric(burst_count) || burst_count < 1) stop("burst_count must be positive numeric", call. = FALSE)
+  if (!is.numeric(image_size) || image_size < 16 || image_size > 256) stop("image_size must be numeric between 16 and 256", call. = FALSE)
+  if (!is.numeric(z_index)) stop("z_index must be numeric", call. = FALSE)
+  if (!is.numeric(opacity) || opacity < 0 || opacity > 1) stop("opacity must be between 0 and 1", call. = FALSE)
+  if (!is.numeric(min_size) || min_size <= 0) stop("min_size must be positive", call. = FALSE)
+  if (!is.numeric(max_size) || max_size <= min_size) stop("max_size must be greater than min_size", call. = FALSE)
+  if (!is.numeric(wind)) stop("wind must be numeric", call. = FALSE)
   
   # Validate emojis
   validate_emojis(emojis)
   
   # Convert emojis/images to JSON
-  emojis_json <- jsonlite::toJSON(emojis)
+  emojis_json <- jsonlite::toJSON(emojis, auto_unbox = FALSE)
   
-  # Build spin configuration
-  spin_config <- if (is.null(spin_speed)) {
-    "enableSpin: false"
-  } else {
-    sprintf("enableSpin: true, spinSpeed: %f", spin_speed)
-  }
-  
-  # Generate JavaScript
-  js_code <- .generate_js(
-    emojis_json, duration, fall_speed, spin_config,
-    particle_count, burst_count, image_size, trigger
+  # Build config object
+  config_list <- list(
+    emojis = emojis,
+    duration = duration,
+    fallSpeed = fall_speed,
+    enableSpin = !is.null(spin_speed),
+    spinSpeed = if (is.null(spin_speed)) 3 else spin_speed,
+    particleCount = particle_count,
+    burstCount = burst_count,
+    imageSize = image_size,
+    trigger = trigger %||% "manual",
+    zIndex = z_index,
+    opacity = opacity,
+    minSize = min_size,
+    maxSize = max_size,
+    wind = wind
   )
   
-  html_code <- paste0(
-    '<div id="emoji-shower-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; overflow: hidden;"></div>',
-    '<script>(function() { ', js_code, ' })();</script>'
-  )
+  config_json <- jsonlite::toJSON(config_list, auto_unbox = TRUE)
   
-  shiny::tags$head(shiny::HTML(html_code))
-}
-
-#' @keywords internal
-.generate_js <- function(emojis_json, duration, fall_speed, spin_config,
-                         particle_count, burst_count, image_size, trigger) {
-  paste0(
-    'const CONFIG = {',
-    'emojis: ', emojis_json, ',',
-    'duration: ', duration, ',',
-    'fallSpeed: ', fall_speed, ',',
-    spin_config, ',',
-    'particleCount: ', particle_count, ',',
-    'burstCount: ', burst_count, ',',
-    'imageSize: ', image_size, ',',
-    'trigger: "', (trigger %||% "manual"), '"',
-    '};',
-    
-    'function isImageUrl(str) {',
-    '  var pattern = /^(https?:\\/\\/)|(data:image)|(\\.(jpg|jpeg|png|gif|webp|svg))$/i;',
-    '  return pattern.test(str);',
-    '}',
-    
-    'function Particle(x, y, content, velocityX, velocityY, range, enableSpin, spinSpeed, imageSize) {',
-    '  this.x = x;',
-    '  this.y = y;',
-    '  this.content = content;',
-    '  this.velocityX = velocityX;',
-    '  this.velocityY = velocityY;',
-    '  this.range = range;',
-    '  this.rotation = 0;',
-    '  this.enableSpin = enableSpin;',
-    '  this.spinSpeed = spinSpeed || 3;',
-    '  this.element = document.createElement("div");',
-    '  this.element.style.position = "fixed";',
-    '  this.element.style.opacity = 1;',
-    '  this.element.style.pointerEvents = "none";',
-    '  this.element.style.userSelect = "none";',
-    '  this.element.style.willChange = "transform";',
-    '  if (isImageUrl(content)) {',
-    '    var img = document.createElement("img");',
-    '    img.src = content;',
-    '    img.style.width = imageSize + "px";',
-    '    img.style.height = imageSize + "px";',
-    '    img.style.objectFit = "contain";',
-    '    img.style.display = "block";',
-    '    this.element.appendChild(img);',
-    '  } else {',
-    '    this.element.style.fontSize = (20 + Math.random() * 15) + "px";',
-    '    this.element.innerHTML = content;',
-    '  }',
-    '  document.getElementById("emoji-shower-container").appendChild(this.element);',
-    '  this.update();',
-    '}',
-    
-    'Particle.prototype.update = function() {',
-    '  this.y += this.velocityY;',
-    '  this.x += this.velocityX;',
-    '  if (this.enableSpin) {',
-    '    this.rotation = (this.rotation + this.spinSpeed) % 360;',
-    '  }',
-    '  if (this.y > window.innerHeight + 100) {',
-    '    this.y = -50;',
-    '    this.x = this.range[0] + Math.random() * this.range[1];',
-    '  }',
-    '  var transform = "translate3d(" + this.x + "px, " + this.y + "px, 0)";',
-    '  if (this.enableSpin) {',
-    '    transform += " rotate(" + this.rotation + "deg)";',
-    '  }',
-    '  this.element.style.transform = transform;',
-    '};',
-    
-    'var particles = [];',
-    'var animationId = null;',
-    
-    'function startShower() {',
-    '  if (particles.length > 0) {',
-    '    particles.forEach(function(p) { p.element.remove(); });',
-    '    particles = [];',
-    '  }',
-    '  var contentList = CONFIG.emojis;',
-    '  var range = [0, window.innerWidth];',
-    '  for (var burst = 0; burst < CONFIG.burstCount; burst++) {',
-    '    setTimeout((function(b) {',
-    '      return function() {',
-    '        for (var i = 0; i < CONFIG.particleCount; i++) {',
-    '          var content = contentList[Math.floor(Math.random() * contentList.length)];',
-    '          var x = range[0] + Math.random() * range[1];',
-    '          var velocityX = -0.3 + Math.random() * 0.6;',
-    '          var velocityY = CONFIG.fallSpeed + Math.random() * CONFIG.fallSpeed * 0.5;',
-    '          particles.push(new Particle(x, -50, content, velocityX, velocityY, range, CONFIG.enableSpin, CONFIG.spinSpeed, CONFIG.imageSize));',
-    '        }',
-    '      };',
-    '    })(burst), burst * 200);',
-    '  }',
-    '  function animate() {',
-    '    particles.forEach(function(p) { p.update(); });',
-    '    animationId = requestAnimationFrame(animate);',
-    '  }',
-    '  animate();',
-    '  setTimeout(function() {',
-    '    cancelAnimationFrame(animationId);',
-    '    particles.forEach(function(p) { p.element.remove(); });',
-    '    particles = [];',
-    '  }, CONFIG.duration);',
-    '}',
-    
-    'if (CONFIG.trigger === "app_load") {',
-    '  if (document.readyState === "loading") {',
-    '    document.addEventListener("DOMContentLoaded", startShower);',
-    '  } else {',
-    '    startShower();',
-    '  }',
-    '}',
-    
-    'window.triggerEmojiShower = startShower;'
+  shiny::tagList(
+    shiny::tags$head(
+      emoji_rain_dependency(),
+      shiny::tags$script(shiny::HTML(paste0("window.EmojiRainConfig = ", config_json, ";")))
+    ),
+    shiny::tags$div(
+      id = "emoji-shower-container",
+      style = "position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; overflow: hidden;"
+    )
   )
 }

@@ -54,15 +54,19 @@
 #'
 #' @export
 setup_emoji_handler <- function() {
-  shiny::tags$script(shiny::HTML("
-    $(document).ready(function() {
-      Shiny.addCustomMessageHandler('triggerEmojiShower', function(msg) {
-        if (typeof window.triggerEmojiShower === 'function') {
-          window.triggerEmojiShower();
-        }
-      });
-    });
-  "))
+  shiny::tagList(
+    emoji_rain_dependency(),
+    shiny::tags$script(shiny::HTML("
+      // Wait for Shiny to be ready before registering the handler
+      if (typeof Shiny !== 'undefined') {
+        Shiny.addCustomMessageHandler('triggerEmojiShower', function(msg) {
+          if (typeof window.triggerEmojiShower === 'function') {
+            window.triggerEmojiShower(msg);
+          }
+        });
+      }
+    "))
+  )
 }
 
 #' Emit Emoji Shower from Server
@@ -74,6 +78,9 @@ setup_emoji_handler <- function() {
 #' @param session Shiny session object. This is automatically passed to your
 #'        server function as an argument. It provides the connection to communicate
 #'        with the client-side JavaScript code.
+#' @param ... Optional named arguments to override the default configuration for this specific shower.
+#'        Any parameter accepted by [emoji_shower_ui()] (e.g., `emojis`, `fall_speed`, `wind`)
+#'        can be passed here.
 #'
 #' @return NULL (invisibly). The function operates for its side effect of sending
 #'        a message to the client to trigger the animation. The return value is
@@ -91,6 +98,11 @@ setup_emoji_handler <- function() {
 #' observeEvent(input$my_button, {
 #'   emit_shower(session)
 #' })
+#' 
+#' # With dynamic overrides
+#' observeEvent(input$storm, {
+#'   emit_shower(session, wind = 2, fall_speed = 4, duration = 2000)
+#' })
 #' ```
 #'
 #' Multiple calls to `emit_shower()` will queue animations sequentially.
@@ -100,6 +112,21 @@ setup_emoji_handler <- function() {
 #' ## Error Handling
 #' The function validates that `session` is a proper Shiny session object
 #' and throws an informative error if an invalid session is provided.
+#'
+#' @note
+#' ## Experimental Feature: External Image Support
+#' When passing external image URLs via the `emojis` parameter, note that image 
+#' loading is **experimental** and subject to the following considerations:
+#' 
+#' - **Asynchronous Loading**: External images load asynchronously. Depending on network 
+#'   conditions, images may require additional time to render. Use appropriately sized 
+#'   images (32-128px recommended).
+#' 
+#' - **Reliability**: Image rendering success may vary based on network latency, CORS 
+#'   policies, browser caching, and server response times.
+#' 
+#' For production environments, Unicode emoji characters are recommended for guaranteed 
+#' visual consistency and superior reliability.
 #'
 #' @examples
 #' \dontrun{
@@ -111,10 +138,37 @@ setup_emoji_handler <- function() {
 #' }
 #'
 #' @export
-emit_shower <- function(session) {
+emit_shower <- function(session, ...) {
   if (!inherits(session, "ShinySession")) {
     stop("session must be a Shiny session object", call. = FALSE)
   }
-  session$sendCustomMessage("triggerEmojiShower", list())
+  
+  # Capture optional arguments
+  args <- list(...)
+  
+  # Convert parameter names to camelCase for JS (simple mapping)
+  # This is a bit manual but safer. 
+  # Or I can just pass them and let JS handle/merge, but JS expects camelCase.
+  # Let's map common ones.
+  js_args <- list()
+  if ("fall_speed" %in% names(args)) js_args$fallSpeed <- args$fall_speed
+  if ("spin_speed" %in% names(args)) {
+      js_args$enableSpin <- TRUE
+      js_args$spinSpeed <- args$spin_speed
+  }
+  if ("particle_count" %in% names(args)) js_args$particleCount <- args$particle_count
+  if ("burst_count" %in% names(args)) js_args$burstCount <- args$burst_count
+  if ("image_size" %in% names(args)) js_args$imageSize <- args$image_size
+  if ("z_index" %in% names(args)) js_args$zIndex <- args$z_index
+  if ("min_size" %in% names(args)) js_args$minSize <- args$min_size
+  if ("max_size" %in% names(args)) js_args$maxSize <- args$max_size
+  
+  # Pass through others directly (duration, wind, opacity, emojis)
+  direct_pass <- c("duration", "wind", "opacity", "emojis")
+  for (p in direct_pass) {
+      if (p %in% names(args)) js_args[[p]] <- args[[p]]
+  }
+  
+  session$sendCustomMessage("triggerEmojiShower", js_args)
   invisible(NULL)
 }

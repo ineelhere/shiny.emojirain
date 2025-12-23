@@ -9,6 +9,11 @@ home:
   title: EmojiRain - Festive Emoji/Image Showers for Shiny Apps
   description: A lightweight R package for adding delightful emoji and image rain animations to Shiny applications.
 
+logo:
+  image: man/figures/logo.png
+  link: "https://github.com/ineelhere/shiny.emojirain"
+  height: 120px
+
 navbar:
   left:
     - text: "Home"

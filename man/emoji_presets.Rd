@@ -11,22 +11,22 @@ A named list containing 8 emoji preset vectors. Each preset is a character
 vector of emoji strings ready to use with \code{\link[=emoji_shower_ui]{emoji_shower_ui()}}.
 Available presets:
 \itemize{
-\item \code{christmas}: Holiday-themed emojis (🎄 Christmas tree, 🎅 Santa,
-⛄ snowman, 🎁 gifts, 🔔 bells, ✨ sparkles, ❄️ snowflakes, 🎊 confetti)
-\item \code{halloween}: Spooky-themed emojis (🎃 pumpkin, 👻 ghost,
-🦇 bat, 🕷️ spider, 💀 skull, 🧛 vampire, 🧙 wizard, 🕯️ candle)
-\item \code{birthday}: Party-themed emojis (🎂 cake, 🎈 balloon, 🎉 party popper,
-🎊 confetti, 🎁 gift, ⭐ star, 🌟 star, 🎀 ribbon)
-\item \code{spring}: Spring-themed emojis (🌸 cherry blossom, 🦋 butterfly,
-🌻 sunflower, 🌺 hibiscus, 🌷 tulip, 🌼 daisy, 🌹 rose, 🐝 bee)
-\item \code{newyear}: New Year-themed emojis (🎆 fireworks, 🎇 sparkler,
-✨ sparkles, 🎉 party popper, 🥂 champagne, ⭐ star, 🌟 star, 🎊 confetti)
-\item \code{love}: Love/Valentine-themed emojis (❤️ red heart, 💕 two hearts,
-💖 sparkling heart, 💗 growing heart, 🌹 rose, 💐 bouquet, 💝 gift heart, 💞 revolving hearts)
-\item \code{success}: Success/achievement-themed emojis (🏆 trophy,
-🥇 gold medal, 🎖️ medal, ⭐ star, 🌟 star, 💎 gem, 👏 clapping hands, 🎯 target)
-\item \code{party}: General party/celebration-themed emojis (🎉 party popper,
-🎊 confetti, 🎈 balloon, 🎁 gift, 🥳 party face, 🍾 champagne, 🎆 fireworks, ✨ sparkles)
+\item \code{christmas}: Holiday-themed emojis (Christmas tree, Santa,
+snowman, gifts, bells, sparkles, snowflakes, confetti)
+\item \code{halloween}: Spooky-themed emojis (pumpkin, ghost,
+bat, spider, skull, vampire, wizard, candle)
+\item \code{birthday}: Party-themed emojis (cake, balloon, party popper,
+confetti, gift, star, shining star, ribbon)
+\item \code{spring}: Spring-themed emojis (cherry blossom, butterfly,
+sunflower, hibiscus, tulip, daisy, rose, bee)
+\item \code{newyear}: New Year-themed emojis (fireworks, sparkler,
+sparkles, party popper, champagne, star, shining star, confetti)
+\item \code{love}: Love/Valentine-themed emojis (red heart, two hearts,
+sparkling heart, growing heart, rose, bouquet, gift heart, revolving hearts)
+\item \code{success}: Success/achievement-themed emojis (trophy,
+gold medal, medal, star, shining star, gem, clapping hands, target)
+\item \code{party}: General party/celebration-themed emojis (party popper,
+confetti, balloon, gift, party face, champagne, fireworks, sparkles)
 }
 }
 \description{
@@ -59,7 +59,7 @@ mixed <- c(emoji_presets()$christmas, emoji_presets()$love)
 emoji_shower_ui(emojis = mixed)
 
 # Extend a preset
-extended <- c(emoji_presets()$birthday, "🍰", "🧁", "🍾")
+extended <- c(emoji_presets()$birthday, "cake", "cupcake", "champagne")
 emoji_shower_ui(emojis = extended)
 }\if{html}{\out{</div>}}
 }

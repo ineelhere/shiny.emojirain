@@ -1,24 +1,50 @@
-test_that("setup_emoji_handler returns a tag", {
+test_that("setup_emoji_handler returns a tag list", {
   handler <- setup_emoji_handler()
-  expect_true(inherits(handler, "shiny.tag"))
+  expect_true(inherits(handler, "shiny.tag.list") || is.list(handler))
 })
 
 test_that("setup_emoji_handler creates a script tag", {
   handler <- setup_emoji_handler()
-  expect_equal(handler$name, "script")
+  # Find the script tag in the list
+  script_tag <- NULL
+  for (item in handler) {
+    if (inherits(item, "shiny.tag") && item$name == "script") {
+      script_tag <- item
+      break
+    }
+  }
+  expect_true(!is.null(script_tag))
+  expect_equal(script_tag$name, "script")
 })
 
 test_that("setup_emoji_handler script contains triggerEmojiShower", {
   handler <- setup_emoji_handler()
-  script_content <- as.character(handler$children[[1]])
+  # Find the script tag
+  script_tag <- NULL
+  for (item in handler) {
+    if (inherits(item, "shiny.tag") && item$name == "script") {
+      script_tag <- item
+      break
+    }
+  }
+  
+  script_content <- as.character(script_tag$children[[1]])
   expect_true(grepl("triggerEmojiShower", script_content))
 })
 
-test_that("setup_emoji_handler script contains document ready", {
+test_that("setup_emoji_handler script contains Shiny reference", {
   handler <- setup_emoji_handler()
-  script_content <- as.character(handler$children[[1]])
-  expect_true(grepl("document.ready", script_content) || 
-              grepl("ready", script_content))
+  # Find the script tag
+  script_tag <- NULL
+  for (item in handler) {
+    if (inherits(item, "shiny.tag") && item$name == "script") {
+      script_tag <- item
+      break
+    }
+  }
+  
+  script_content <- as.character(script_tag$children[[1]])
+  expect_true(grepl("Shiny|addCustomMessageHandler", script_content))
 })
 
 test_that("emit_shower rejects non-session input", {

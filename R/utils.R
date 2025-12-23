@@ -28,3 +28,18 @@ validate_emojis <- function(emojis) {
 `%||%` <- function(x, y) {
   if (is.null(x)) y else x
 }
+
+#' Emoji Rain Assets Dependency
+#'
+#' @return An htmlDependency object
+#' @keywords internal
+emoji_rain_dependency <- function() {
+  htmltools::htmlDependency(
+    name = "shiny.emojirain",
+    version = "1.1.0",
+    src = c(file = system.file("assets", package = "shiny.emojirain")),
+    script = "emoji_shower.js",
+    stylesheet = "emoji_shower.css",
+    all_files = TRUE
+  )
+}

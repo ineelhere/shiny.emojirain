@@ -4,12 +4,16 @@
 \alias{emit_shower}
 \title{Emit Emoji Shower from Server}
 \usage{
-emit_shower(session)
+emit_shower(session, ...)
 }
 \arguments{
 \item{session}{Shiny session object. This is automatically passed to your
 server function as an argument. It provides the connection to communicate
 with the client-side JavaScript code.}
+
+\item{...}{Optional named arguments to override the default configuration for this specific shower.
+Any parameter accepted by \code{\link[=emoji_shower_ui]{emoji_shower_ui()}} (e.g., \code{emojis}, \code{fall_speed}, \code{wind})
+can be passed here.}
 }
 \value{
 NULL (invisibly). The function operates for its side effect of sending
@@ -36,6 +40,11 @@ Use within any reactive context (observeEvent, reactive, etc.):
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{observeEvent(input$my_button, \{
   emit_shower(session)
 \})
+
+# With dynamic overrides
+observeEvent(input$storm, \{
+  emit_shower(session, wind = 2, fall_speed = 4, duration = 2000)
+\})
 }\if{html}{\out{</div>}}
 
 Multiple calls to \code{emit_shower()} will queue animations sequentially.
@@ -47,6 +56,23 @@ the original \code{\link[=emoji_shower_ui]{emoji_shower_ui()}} call.
 
 The function validates that \code{session} is a proper Shiny session object
 and throws an informative error if an invalid session is provided.
+}
+}
+\note{
+\subsection{Experimental Feature: External Image Support}{
+
+When passing external image URLs via the \code{emojis} parameter, note that image
+loading is \strong{experimental} and subject to the following considerations:
+\itemize{
+\item \strong{Asynchronous Loading}: External images load asynchronously. Depending on network
+conditions, images may require additional time to render. Use appropriately sized
+images (32-128px recommended).
+\item \strong{Reliability}: Image rendering success may vary based on network latency, CORS
+policies, browser caching, and server response times.
+}
+
+For production environments, Unicode emoji characters are recommended for guaranteed
+visual consistency and superior reliability.
 }
 }
 \examples{
