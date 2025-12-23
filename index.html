@@ -6,6 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>EmojiRain - Festive Emoji/Image Showers for Shiny Apps • shiny.emojirain</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -13,6 +18,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="EmojiRain - Festive Emoji/Image Showers for Shiny Apps">
 <meta name="description" content="A lightweight R package for adding delightful emoji and image rain animations to Shiny applications.">
 <meta property="og:description" content="A lightweight R package for adding delightful emoji and image rain animations to Shiny applications.">
+<meta property="og:image" content="https://ineelhere.github.io/shiny.emojirain/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -47,107 +53,97 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="shinyemojirain">shiny.emojirain<a class="anchor" aria-label="anchor" href="#shinyemojirain"></a>
-</h1></div>
-<!-- Badges -->
-<p><a href="https://github.com/ineelhere/shiny.emojirain/actions" class="external-link"><img src="https://github.com/ineelhere/shiny.emojirain/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://CRAN.R-project.org/package=shiny.emojirain" class="external-link"><img src="https://www.r-pkg.org/badges/version/shiny.emojirain" alt="CRAN status"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a> <img src="https://img.shields.io/github/last-commit/ineelhere/shiny.emojirain" alt="GitHub last commit"><img src="https://img.shields.io/github/stars/ineelhere/shiny.emojirain?style=social" alt="GitHub stars"></p>
-<p>Create stunning emoji shower animations for your R Shiny applications! 🎉 Add festive, celebratory effects with customizable speed, rotation, and emojis—perfect for holidays, celebrations, and special events.</p>
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="shinyemojirain-️">shiny.emojirain 🌧️✨<a class="anchor" aria-label="anchor" href="#shinyemojirain-%EF%B8%8F"></a>
+</h1>
+</div>
+<!-- badges: start -->
+
+<p><strong>shiny.emojirain</strong> brings delightful emoji shower animations to your R Shiny applications. Perfect for holidays, celebrations, milestones, and special events! 🎉</p>
+<p>Transform your Shiny apps with eye-catching, customizable animations that delight users and add a touch of whimsy to your data dashboards, interactive tools, and web applications.</p>
+<blockquote>
+<p><strong>Give this project a ⭐ if you find it useful!</strong> Your support helps us reach more developers and continue improving the package.</p>
+</blockquote>
 <div class="section level2">
-<h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
+<h2 id="id_-table-of-contents">📋 Table of Contents<a class="anchor" aria-label="anchor" href="#id_-table-of-contents"></a>
 </h2>
-<p>✨ <strong>Zero Dependencies</strong> - Lightweight JavaScript, no external libraries needed<br>
-🎨 <strong>Highly Customizable</strong> - Control speed, rotation, particle count, and more<br>
-🎭 <strong>Multiple Emoji Presets</strong> - Christmas, Halloween, Birthday, Spring, New Year, Love, Success, Party<br>
-🖼️ <strong>Image Support</strong> - Use emoji characters, web images, or local files<br>
-⚡ <strong>Performance Optimized</strong> - Smooth animations with efficient DOM handling<br>
-🎯 <strong>Easy Integration</strong> - Simple API, works seamlessly with Shiny<br>
-📱 <strong>Responsive</strong> - Works on all screen sizes and devices</p>
+<ul>
+<li><a href="#id_-features">Features</a></li>
+<li><a href="#id_-installation">Installation</a></li>
+<li><a href="#id_-quick-start">Quick Start</a></li>
+<li><a href="#id_-usage-examples">Usage Examples</a></li>
+<li><a href="#id_-available-presets">Available Presets</a></li>
+<li><a href="#id_%EF%B8%8F-image-loading-considerations">Image Loading Notes</a></li>
+<li><a href="#id_-api-reference">Parameters Reference</a></li>
+<li><a href="#id_-contributing">Contributing</a></li>
+<li><a href="#id_-license">License</a></li>
+</ul>
 </div>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<h2 id="id_-features">✨ Features<a class="anchor" aria-label="anchor" href="#id_-features"></a>
 </h2>
-<p>Install from GitHub:</p>
+<ul>
+<li>
+<strong>🎯 Easy Integration</strong> - Add festive animations with just a few lines of code</li>
+<li>
+<strong>🎨 Highly Customizable</strong> - Control speed, rotation, size, opacity, wind, and more</li>
+<li>
+<strong>🎭 Flexible Triggers</strong> - Auto-trigger on app load or manually via server-side events</li>
+<li>
+<strong>🎪 Pre-built Themes</strong> - 8 ready-to-use presets (Christmas, Halloween, Birthday, etc.)</li>
+<li>
+<strong>🖼️ Versatile Content</strong> - Use emojis, custom images, GIFs, or SVGs</li>
+<li>
+<strong>⚡ Performance Optimized</strong> - Lightweight, dependency-free, smooth animations</li>
+<li>
+<strong>📱 Responsive</strong> - Works seamlessly across all devices and screen sizes</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="id_-installation">📦 Installation<a class="anchor" aria-label="anchor" href="#id_-installation"></a>
+</h2>
+<p>Install the development version from GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install devtools if you haven't already</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># Install devtools if needed</span></span>
+<span><span class="co"># install.packages("devtools")</span></span>
 <span></span>
-<span><span class="co"># Install shiny.emojirain</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ineelhere/shiny.emojirain"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
+<h2 id="id_-quick-start">🚀 Quick Start<a class="anchor" aria-label="anchor" href="#id_-quick-start"></a>
 </h2>
-<div class="section level3">
-<h3 id="basic-usage---auto-trigger-on-page-load">Basic Usage - Auto-trigger on Page Load<a class="anchor" aria-label="anchor" href="#basic-usage---auto-trigger-on-page-load"></a>
-</h3>
+<p>Add a festive emoji shower that triggers when your app loads:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ineelhere/shiny.emojirain" class="external-link">shiny.emojirain</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h1</a></span><span class="op">(</span><span class="st">"Welcome to the Celebration!"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span><span class="op">)</span>,  <span class="co"># Uses Christmas theme by default</span></span>
+<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h1</a></span><span class="op">(</span><span class="st">"Welcome to the Holiday Season! 🎄"</span>, align <span class="op">=</span> <span class="st">"center"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 </div>
+<div class="section level2">
+<h2 id="id_-usage-examples">📖 Usage Examples<a class="anchor" aria-label="anchor" href="#id_-usage-examples"></a>
+</h2>
 <div class="section level3">
-<h3 id="with-custom-emojis">With Custom Emojis<a class="anchor" aria-label="anchor" href="#with-custom-emojis"></a>
+<h3 id="button-triggered-shower">Button-Triggered Shower<a class="anchor" aria-label="anchor" href="#button-triggered-shower"></a>
 </h3>
+<p>Trigger animations based on user interactions:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ineelhere/shiny.emojirain" class="external-link">shiny.emojirain</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span></span>
-<span>    emojis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"🎄"</span>, <span class="st">"🎅"</span>, <span class="st">"⛄"</span>, <span class="st">"🎁"</span>, <span class="st">"❄️"</span><span class="op">)</span>,</span>
-<span>    trigger <span class="op">=</span> <span class="st">"app_load"</span>,</span>
-<span>    duration <span class="op">=</span> <span class="fl">8000</span>,</span>
-<span>    fall_speed <span class="op">=</span> <span class="fl">1.2</span>,</span>
-<span>    particle_count <span class="op">=</span> <span class="fl">20</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h1</a></span><span class="op">(</span><span class="st">"Christmas Celebration!"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="using-emoji-presets">Using Emoji Presets<a class="anchor" aria-label="anchor" href="#using-emoji-presets"></a>
-</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ineelhere/shiny.emojirain" class="external-link">shiny.emojirain</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span></span>
-<span>    emojis <span class="op">=</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">halloween</span>,</span>
-<span>    duration <span class="op">=</span> <span class="fl">6000</span>,</span>
-<span>    spin_speed <span class="op">=</span> <span class="fl">2</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h1</a></span><span class="op">(</span><span class="st">"🎃 Happy Halloween! 👻"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="manual-trigger-with-server-side-control">Manual Trigger with Server-side Control<a class="anchor" aria-label="anchor" href="#manual-trigger-with-server-side-control"></a>
-</h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ineelhere/shiny.emojirain" class="external-link">shiny.emojirain</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="reference/setup_emoji_handler.html">setup_emoji_handler</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span>trigger <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h2</a></span><span class="op">(</span><span class="st">"Birthday Bash!"</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"celebrate"</span>, <span class="st">"🎉 Click to Celebrate!"</span>, </span>
-<span>               class <span class="op">=</span> <span class="st">"btn btn-success btn-lg"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span>trigger <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>,  <span class="co"># Disable auto-trigger</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html" class="external-link">titlePanel</a></span><span class="op">(</span><span class="st">"Celebration Station 🎉"</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"celebrate"</span>, <span class="st">"Click to Celebrate!"</span>, </span>
+<span>               class <span class="op">=</span> <span class="st">"btn btn-primary btn-lg"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span></span>
@@ -159,55 +155,95 @@
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="advanced-custom-parameters">Advanced: Custom Parameters<a class="anchor" aria-label="anchor" href="#advanced-custom-parameters"></a>
+<h3 id="advanced-customization">Advanced Customization<a class="anchor" aria-label="anchor" href="#advanced-customization"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p>Customize every aspect of the animation:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ineelhere/shiny.emojirain" class="external-link">shiny.emojirain</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="reference/setup_emoji_handler.html">setup_emoji_handler</a></span><span class="op">(</span><span class="op">)</span>,  <span class="co"># Required for manual triggering</span></span>
 <span>  <span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span></span>
-<span>    emojis <span class="op">=</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">party</span>,</span>
-<span>    trigger <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    duration <span class="op">=</span> <span class="fl">10000</span>,      <span class="co"># 10 second animation</span></span>
-<span>    fall_speed <span class="op">=</span> <span class="fl">2.0</span>,      <span class="co"># Faster falling</span></span>
-<span>    spin_speed <span class="op">=</span> <span class="fl">3</span>,        <span class="co"># Noticeable rotation</span></span>
-<span>    particle_count <span class="op">=</span> <span class="fl">25</span>,   <span class="co"># More particles</span></span>
-<span>    burst_count <span class="op">=</span> <span class="fl">12</span>,      <span class="co"># More bursts</span></span>
-<span>    image_size <span class="op">=</span> <span class="fl">48</span>        <span class="co"># Larger emoji size</span></span>
+<span>    emojis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"🚀"</span>, <span class="st">"⭐"</span>, <span class="st">"🪐"</span>, <span class="st">"🌙"</span>, <span class="st">"✨"</span><span class="op">)</span>,</span>
+<span>    trigger <span class="op">=</span> <span class="st">"app_load"</span>,</span>
+<span>    duration <span class="op">=</span> <span class="fl">8000</span>,        <span class="co"># 8 seconds</span></span>
+<span>    fall_speed <span class="op">=</span> <span class="fl">2</span>,         <span class="co"># Faster falling</span></span>
+<span>    spin_speed <span class="op">=</span> <span class="fl">4</span>,         <span class="co"># Enable rotation</span></span>
+<span>    wind <span class="op">=</span> <span class="fl">0.5</span>,             <span class="co"># Drift to the right</span></span>
+<span>    particle_count <span class="op">=</span> <span class="fl">25</span>,    <span class="co"># More particles</span></span>
+<span>    burst_count <span class="op">=</span> <span class="fl">10</span>,       <span class="co"># More bursts</span></span>
+<span>    opacity <span class="op">=</span> <span class="fl">0.9</span>,          <span class="co"># Slightly transparent</span></span>
+<span>    min_size <span class="op">=</span> <span class="fl">30</span>,          <span class="co"># Larger emojis</span></span>
+<span>    max_size <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>    z_index <span class="op">=</span> <span class="fl">9999</span>          <span class="co"># Always on top</span></span>
 <span>  <span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h1</a></span><span class="op">(</span><span class="st">"🥳 New Year Party! 🎆"</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"party"</span>, <span class="st">"Start the Party!"</span>, class <span class="op">=</span> <span class="st">"btn btn-primary btn-lg"</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">br</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">br</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">p</a></span><span class="op">(</span><span class="st">"Click the button to trigger the emoji shower!"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h1</a></span><span class="op">(</span><span class="st">"Space Adventure! 🚀"</span>, align <span class="op">=</span> <span class="st">"center"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="dynamic-server-side-control">Dynamic Server-Side Control<a class="anchor" aria-label="anchor" href="#dynamic-server-side-control"></a>
+</h3>
+<p>Change the animation properties on the fly:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ineelhere/shiny.emojirain" class="external-link">shiny.emojirain</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="reference/setup_emoji_handler.html">setup_emoji_handler</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html" class="external-link">titlePanel</a></span><span class="op">(</span><span class="st">"Dynamic Emoji Rain"</span><span class="op">)</span>,</span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">sidebarLayout</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">sidebarPanel</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span><span class="st">"theme"</span>, <span class="st">"Choose Theme:"</span>,</span>
+<span>                  choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"christmas"</span>, <span class="st">"halloween"</span>, <span class="st">"birthday"</span>, </span>
+<span>                              <span class="st">"love"</span>, <span class="st">"party"</span>, <span class="st">"success"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span><span class="st">"wind"</span>, <span class="st">"Wind Strength:"</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span><span class="st">"speed"</span>, <span class="st">"Fall Speed:"</span>, <span class="fl">0.5</span>, <span class="fl">3</span>, <span class="fl">1.5</span>, <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"trigger"</span>, <span class="st">"Make it Rain!"</span>, class <span class="op">=</span> <span class="st">"btn btn-success"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">mainPanel</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h3</a></span><span class="op">(</span><span class="st">"Click the button to see your custom shower!"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">party</span>, <span class="op">{</span></span>
-<span>    <span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">trigger</span>, <span class="op">{</span></span>
+<span>    <span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span></span>
+<span>      <span class="va">session</span>,</span>
+<span>      emojis <span class="op">=</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="va">input</span><span class="op">$</span><span class="va">theme</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>      wind <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">wind</span>,</span>
+<span>      fall_speed <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">speed</span>,</span>
+<span>      duration <span class="op">=</span> <span class="fl">5000</span></span>
+<span>    <span class="op">)</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="with-web-images">With Web Images<a class="anchor" aria-label="anchor" href="#with-web-images"></a>
+<h3 id="using-custom-images">Using Custom Images<a class="anchor" aria-label="anchor" href="#using-custom-images"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p>Create branded experiences with your own images:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ineelhere/shiny.emojirain" class="external-link">shiny.emojirain</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span></span>
 <span>    emojis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>      <span class="st">"https://via.placeholder.com/32/FFD700/FFD700?text=★"</span>,</span>
-<span>      <span class="st">"https://via.placeholder.com/32/FF69B4/FF69B4?text=♥"</span></span>
+<span>      <span class="st">"https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/2b50.svg"</span>,</span>
+<span>      <span class="st">"https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f389.svg"</span></span>
 <span>    <span class="op">)</span>,</span>
-<span>    image_size <span class="op">=</span> <span class="fl">32</span>,</span>
+<span>    image_size <span class="op">=</span> <span class="fl">48</span>,</span>
 <span>    trigger <span class="op">=</span> <span class="st">"app_load"</span></span>
 <span>  <span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h1</a></span><span class="op">(</span><span class="st">"Custom Image Shower!"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h1</a></span><span class="op">(</span><span class="st">"Custom Image Shower"</span>, align <span class="op">=</span> <span class="st">"center"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
@@ -215,139 +251,337 @@
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="multiple-showers-with-different-triggers">Multiple Showers with Different Triggers<a class="anchor" aria-label="anchor" href="#multiple-showers-with-different-triggers"></a>
+<h3 id="multiple-themed-buttons">Multiple Themed Buttons<a class="anchor" aria-label="anchor" href="#multiple-themed-buttons"></a>
 </h3>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<p>Different themes for different occasions:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ineelhere/shiny.emojirain" class="external-link">shiny.emojirain</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="reference/setup_emoji_handler.html">setup_emoji_handler</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h1</a></span><span class="op">(</span><span class="st">"Multi-Shower Demo"</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span>trigger <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>,</span>
 <span>  </span>
-<span>  <span class="co"># First shower - auto-trigger</span></span>
-<span>  <span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span></span>
-<span>    emojis <span class="op">=</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">christmas</span>,</span>
-<span>    duration <span class="op">=</span> <span class="fl">6000</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html" class="external-link">titlePanel</a></span><span class="op">(</span><span class="st">"Multi-Theme Celebration"</span><span class="op">)</span>,</span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidRow</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/column.html" class="external-link">column</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"xmas"</span>, <span class="st">"🎄 Christmas"</span>, class <span class="op">=</span> <span class="st">"btn btn-info btn-block"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/column.html" class="external-link">column</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"bday"</span>, <span class="st">"🎂 Birthday"</span>, class <span class="op">=</span> <span class="st">"btn btn-warning btn-block"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/column.html" class="external-link">column</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"halloween"</span>, <span class="st">"🎃 Halloween"</span>, class <span class="op">=</span> <span class="st">"btn btn-dark btn-block"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span>,</span>
-<span>  </span>
-<span>  <span class="co"># Control buttons for manual showers</span></span>
 <span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">br</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"xmas"</span>, <span class="st">"❄️ Christmas"</span>, class <span class="op">=</span> <span class="st">"btn btn-info"</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"bday"</span>, <span class="st">"🎂 Birthday"</span>, class <span class="op">=</span> <span class="st">"btn btn-warning"</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"halloween"</span>, <span class="st">"👻 Halloween"</span>, class <span class="op">=</span> <span class="st">"btn btn-dark"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidRow</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/column.html" class="external-link">column</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"love"</span>, <span class="st">"💖 Love"</span>, class <span class="op">=</span> <span class="st">"btn btn-danger btn-block"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/column.html" class="external-link">column</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"success"</span>, <span class="st">"🏆 Success"</span>, class <span class="op">=</span> <span class="st">"btn btn-success btn-block"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/column.html" class="external-link">column</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"party"</span>, <span class="st">"🥳 Party"</span>, class <span class="op">=</span> <span class="st">"btn btn-primary btn-block"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">xmas</span>, <span class="op">{</span></span>
-<span>    <span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span>, emojis <span class="op">=</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">christmas</span>, spin_speed <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">bday</span>, <span class="op">{</span></span>
-<span>    <span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span>, emojis <span class="op">=</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">birthday</span><span class="op">)</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">halloween</span>, <span class="op">{</span></span>
-<span>    <span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span>, emojis <span class="op">=</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">halloween</span>, opacity <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">love</span>, <span class="op">{</span></span>
+<span>    <span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span>, emojis <span class="op">=</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">love</span>, fall_speed <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">success</span>, <span class="op">{</span></span>
+<span>    <span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span>, emojis <span class="op">=</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">success</span>, spin_speed <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">party</span>, <span class="op">{</span></span>
+<span>    <span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span>, emojis <span class="op">=</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">party</span>, particle_count <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="lovevalentine-theme">Love/Valentine Theme<a class="anchor" aria-label="anchor" href="#lovevalentine-theme"></a>
-</h3>
-<p>Create a romantic experience with a shower of hearts and roses:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ineelhere/shiny.emojirain" class="external-link">shiny.emojirain</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span></span>
-<span>    emojis <span class="op">=</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">love</span>,</span>
-<span>    duration <span class="op">=</span> <span class="fl">7000</span>,</span>
-<span>    fall_speed <span class="op">=</span> <span class="fl">1.3</span>,</span>
-<span>    spin_speed <span class="op">=</span> <span class="fl">2.5</span>,</span>
-<span>    trigger <span class="op">=</span> <span class="st">"app_load"</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h1</a></span><span class="op">(</span><span class="st">"💕 Spread the Love! 💕"</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">p</a></span><span class="op">(</span><span class="st">"Perfect for Valentine's Day, anniversaries, or expressing appreciation!"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></span></code></pre></div>
-</div>
 </div>
 <div class="section level2">
-<h2 id="available-emoji-presets">Available Emoji Presets<a class="anchor" aria-label="anchor" href="#available-emoji-presets"></a>
+<h2 id="id_-available-presets">🎨 Available Presets<a class="anchor" aria-label="anchor" href="#id_-available-presets"></a>
 </h2>
-<p>Use the <code><a href="reference/emoji_presets.html">emoji_presets()</a></code> function to access pre-made emoji collections:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># View all available presets</span></span>
-<span><span class="va">presets</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span></span>
+<p>The <code><a href="reference/emoji_presets.html">emoji_presets()</a></code> function provides 8 curated emoji collections:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">presets</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">presets</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Use a specific preset</span></span>
-<span><span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">christmas</span>   <span class="co"># 🎄 🎅 ⛄ 🎁 🔔 ✨ ❄️ 🎊</span></span>
-<span><span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">halloween</span>   <span class="co"># 🎃 👻 🦇 🕷️ 💀 🧛 🧙 🕯️</span></span>
-<span><span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">birthday</span>    <span class="co"># 🎂 🎈 🎉 🎊 🎁 ⭐ 🌟 🎀</span></span>
-<span><span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">spring</span>      <span class="co"># 🌸 🦋 🌻 🌺 🌷 🌼 🌹 🐝</span></span>
-<span><span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">newyear</span>     <span class="co"># 🎆 🎇 ✨ 🎉 🥂 ⭐ 🌟 🎊</span></span>
-<span><span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">love</span>        <span class="co"># ❤️ 💕 💖 💗 🌹 💐 💝 💞</span></span>
-<span><span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">success</span>     <span class="co"># 🏆 🥇 🎖️ ⭐ 🌟 💎 👏 🎯</span></span>
-<span><span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">party</span>       <span class="co"># 🎉 🎊 🎈 🎁 🥳 🍾 🎆 ✨</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "christmas" "halloween" "birthday"  "spring"    "newyear"  </span></span>
+<span><span class="co">#&gt; [6] "love"      "success"   "party"</span></span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="30%">
+<col width="30%">
+<col width="38%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Preset</th>
+<th align="left">Emojis</th>
+<th align="left">Use Case</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>christmas</code></td>
+<td align="left">🎄 🎅 ⛄ 🎁 🔔 ✨ ❄️ 🎊</td>
+<td align="left">Holiday season, winter celebrations</td>
+</tr>
+<tr class="even">
+<td align="left"><code>halloween</code></td>
+<td align="left">🎃 👻 🦇 🕷️ 💀 🧛 🧙 🕯️</td>
+<td align="left">Halloween, spooky themes</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>birthday</code></td>
+<td align="left">🎂 🎈 🎉 🎊 🎁 ⭐ 🌟 🎀</td>
+<td align="left">Birthdays, anniversaries</td>
+</tr>
+<tr class="even">
+<td align="left"><code>spring</code></td>
+<td align="left">🌸 🦋 🌻 🌺 🌷 🌼 🌹 🐝</td>
+<td align="left">Spring, nature, renewal</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>newyear</code></td>
+<td align="left">🎆 🎇 ✨ 🎉 🥂 ⭐ 🌟 🎊</td>
+<td align="left">New Year celebrations</td>
+</tr>
+<tr class="even">
+<td align="left"><code>love</code></td>
+<td align="left">❤️ 💕 💖 💗 🌹 💐 💝 💞</td>
+<td align="left">Valentine’s Day, romance</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>success</code></td>
+<td align="left">🏆 🥇 🎖️ ⭐ 🌟 💎 👏 🎯</td>
+<td align="left">Achievements, milestones</td>
+</tr>
+<tr class="even">
+<td align="left"><code>party</code></td>
+<td align="left">🎉 🎊 🎈 🎁 🥳 🍾 🎆 ✨</td>
+<td align="left">General celebrations</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section level2">
-<h2 id="function-reference">Function Reference<a class="anchor" aria-label="anchor" href="#function-reference"></a>
+<h2 id="id_️-image-loading-considerations">⚠️ Image Loading Considerations<a class="anchor" aria-label="anchor" href="#id_%EF%B8%8F-image-loading-considerations"></a>
+</h2>
+<p><strong>Note on External Image Support</strong>: The ability to render external images (JPEG, PNG, GIF, WebP, SVG) is currently available as an <strong>experimental feature</strong>. While the feature is functional, please be aware of the following:</p>
+<ul>
+<li>
+<strong>Asynchronous Loading</strong>: External images are loaded asynchronously. Depending on network conditions and file size, images may require additional time to render after the animation begins. For optimal results, ensure images are appropriately sized (32-128px recommended for the <code>image_size</code> parameter).</li>
+<li>
+<strong>Reliability Considerations</strong>: Due to the asynchronous nature of resource loading, image rendering success may vary based on:
+<ul>
+<li>Network latency and bandwidth</li>
+<li>CORS (Cross-Origin Resource Sharing) policies of the image host</li>
+<li>Browser caching behavior</li>
+<li>Server response times</li>
+</ul>
+</li>
+</ul>
+<p><strong>Recommendation</strong>: For production environments requiring guaranteed visual consistency, we recommend using Unicode emoji characters instead of external image files. Emojis render immediately without external dependencies and provide superior reliability across all user sessions.</p>
+<p>If you intend to use external images, consider implementing fallback emojis in your application for enhanced robustness.</p>
+</div>
+<div class="section level2">
+<h2 id="id_-parameter-reference">📚 Parameter Reference<a class="anchor" aria-label="anchor" href="#id_-parameter-reference"></a>
 </h2>
 <div class="section level3">
 <h3 id="emoji_shower_ui">
 <code>emoji_shower_ui()</code><a class="anchor" aria-label="anchor" href="#emoji_shower_ui"></a>
 </h3>
 <p>Create the emoji shower animation UI component.</p>
-<p><strong>Parameters:</strong> - <code>emojis</code> - Character vector of emoji characters or image URLs (default: Christmas emojis) - <code>trigger</code> - When to trigger (<code>"app_load"</code> or <code>NULL</code> for manual) - <code>duration</code> - Animation duration in milliseconds (default: 6000) - <code>fall_speed</code> - Gravity factor, 0.5-2.5 (default: 1.5) - <code>spin_speed</code> - Rotation speed in degrees/frame (default: NULL) - <code>particle_count</code> - Number of particles per burst, 5-30 (default: 15) - <code>burst_count</code> - Number of bursts, 1-20 (default: 8) - <code>image_size</code> - Image size in pixels, 16-256 (default: 32)</p>
+<div class="section level4">
+<h4 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a>
+</h4>
+<table class="table">
+<colgroup>
+<col width="28%">
+<col width="15%">
+<col width="23%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>emojis</code></td>
+<td align="left">character vector</td>
+<td align="left">Christmas set</td>
+<td align="left">Emoji characters or image URLs</td>
+</tr>
+<tr class="even">
+<td align="left"><code>trigger</code></td>
+<td align="left">character or NULL</td>
+<td align="left"><code>"app_load"</code></td>
+<td align="left">When to trigger: <code>"app_load"</code> or <code>NULL</code> (manual)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>duration</code></td>
+<td align="left">numeric</td>
+<td align="left"><code>6000</code></td>
+<td align="left">Animation duration in milliseconds</td>
+</tr>
+<tr class="even">
+<td align="left"><code>fall_speed</code></td>
+<td align="left">numeric</td>
+<td align="left"><code>1.5</code></td>
+<td align="left">Gravity/fall speed (0.5-2.5)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>spin_speed</code></td>
+<td align="left">numeric or NULL</td>
+<td align="left"><code>NULL</code></td>
+<td align="left">Rotation speed (NULL to disable)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>particle_count</code></td>
+<td align="left">numeric</td>
+<td align="left"><code>15</code></td>
+<td align="left">Particles per burst (5-30)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>burst_count</code></td>
+<td align="left">numeric</td>
+<td align="left"><code>8</code></td>
+<td align="left">Number of bursts (1-20)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>image_size</code></td>
+<td align="left">numeric</td>
+<td align="left"><code>32</code></td>
+<td align="left">Image size in pixels (16-256)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>z_index</code></td>
+<td align="left">numeric</td>
+<td align="left"><code>9999</code></td>
+<td align="left">CSS z-index for layering</td>
+</tr>
+<tr class="even">
+<td align="left"><code>opacity</code></td>
+<td align="left">numeric</td>
+<td align="left"><code>1</code></td>
+<td align="left">Particle opacity (0-1)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>min_size</code></td>
+<td align="left">numeric</td>
+<td align="left"><code>20</code></td>
+<td align="left">Minimum emoji size in pixels</td>
+</tr>
+<tr class="even">
+<td align="left"><code>max_size</code></td>
+<td align="left">numeric</td>
+<td align="left"><code>35</code></td>
+<td align="left">Maximum emoji size in pixels</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>wind</code></td>
+<td align="left">numeric</td>
+<td align="left"><code>0</code></td>
+<td align="left">Horizontal drift (-2 to 2, positive = right)</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section level3">
-<h3 id="emoji_presets">
-<code>emoji_presets()</code><a class="anchor" aria-label="anchor" href="#emoji_presets"></a>
-</h3>
-<p>Get a named list of pre-made emoji collections for common themes.</p>
 </div>
 <div class="section level3">
 <h3 id="setup_emoji_handler">
 <code>setup_emoji_handler()</code><a class="anchor" aria-label="anchor" href="#setup_emoji_handler"></a>
 </h3>
-<p>Set up the Shiny message handler for manual shower triggering.</p>
+<p>Set up the message handler for manual shower triggering. Include this in your UI when using <code><a href="reference/emit_shower.html">emit_shower()</a></code> in your server.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="reference/setup_emoji_handler.html">setup_emoji_handler</a></span><span class="op">(</span><span class="op">)</span>,  <span class="co"># Required for manual triggering</span></span>
+<span>  <span class="co"># ... rest of UI</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="emit_showersession">
-<code>emit_shower(session)</code><a class="anchor" aria-label="anchor" href="#emit_showersession"></a>
+<h3 id="emit_showersession-">
+<code>emit_shower(session, ...)</code><a class="anchor" aria-label="anchor" href="#emit_showersession-"></a>
 </h3>
-<p>Trigger an emoji shower from your server code. Requires <code><a href="reference/setup_emoji_handler.html">setup_emoji_handler()</a></code> in UI.</p>
+<p>Trigger an emoji shower from your server code.</p>
+<div class="section level4">
+<h4 id="parameters-1">Parameters<a class="anchor" aria-label="anchor" href="#parameters-1"></a>
+</h4>
+<ul>
+<li>
+<code>session</code> - The Shiny session object</li>
+<li>
+<code>...</code> - Optional named arguments to override configuration (e.g., <code>emojis</code>, <code>wind</code>, <code>fall_speed</code>)</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Basic usage</span></span>
+<span><span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># With custom parameters</span></span>
+<span><span class="fu"><a href="reference/emit_shower.html">emit_shower</a></span><span class="op">(</span><span class="va">session</span>, </span>
+<span>            emojis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"🎉"</span>, <span class="st">"✨"</span><span class="op">)</span>, </span>
+<span>            wind <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>            duration <span class="op">=</span> <span class="fl">3000</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2">
-<h2 id="testing">Testing<a class="anchor" aria-label="anchor" href="#testing"></a>
-</h2>
-<p>Run the test suite:</p>
+<div class="section level3">
+<h3 id="emoji_presets">
+<code>emoji_presets()</code><a class="anchor" aria-label="anchor" href="#emoji_presets"></a>
+</h3>
+<p>Returns a named list of pre-configured emoji collections for common themes.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">test</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">presets</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/emoji_presets.html">emoji_presets</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/emoji_shower_ui.html">emoji_shower_ui</a></span><span class="op">(</span>emojis <span class="op">=</span> <span class="va">presets</span><span class="op">$</span><span class="va">halloween</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
-<h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
+<h2 id="id_-contributing">🤝 Contributing<a class="anchor" aria-label="anchor" href="#id_-contributing"></a>
 </h2>
-<p>Found a bug? Have a feature request? Please open an issue on <a href="https://github.com/ineelhere/shiny.emojirain/issues" class="external-link">GitHub</a>.</p>
+<p>Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.</p>
 </div>
 <div class="section level2">
-<h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
+<h2 id="id_-license">📝 License<a class="anchor" aria-label="anchor" href="#id_-license"></a>
 </h2>
-<p>MIT License - see <a href="LICENSE">LICENSE</a> file for details.</p>
+<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+<hr>
 </div>
 <div class="section level2">
-<h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a>
+<h2 id="id_-tips--tricks">💡 Tips &amp; Tricks<a class="anchor" aria-label="anchor" href="#id_-tips--tricks"></a>
 </h2>
-<p><strong>Indraneel Chakraborty</strong><br><a href="https://github.com/ineelhere" class="external-link">GitHub</a> | <a href="mailto:hello.indraneel@gmail.com">Email</a></p>
+<ul>
+<li>
+<strong>Performance</strong>: On resource-constrained devices, reduce <code>particle_count</code> and <code>burst_count</code> for smoother animations</li>
+<li>
+<strong>Mobile Friendly</strong>: Test on mobile devices; consider lighter animations for better performance</li>
+<li>
+<strong>Accessibility</strong>: Use animations sparingly if your audience includes users with motion sensitivity</li>
+<li>
+<strong>Custom Branding</strong>: Combine with your app’s color scheme by using custom emoji/image selections</li>
+<li>
+<strong>Event Celebrations</strong>: Pair with notifications or milestones to celebrate user achievements</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="id_-found-a-bug">🐛 Found a Bug?<a class="anchor" aria-label="anchor" href="#id_-found-a-bug"></a>
+</h2>
+<p>Please open an <a href="https://github.com/ineelhere/shiny.emojirain/issues" class="external-link">issue on GitHub</a> with: - A clear description of the problem - Steps to reproduce - Your R version and OS information - Expected vs. actual behavior</p>
+</div>
+<div class="section level2">
+<h2 id="id_-show-your-support">🌟 Show Your Support<a class="anchor" aria-label="anchor" href="#id_-show-your-support"></a>
+</h2>
+<p>If you find <strong>shiny.emojirain</strong> useful, please: - ⭐ <a href="https://github.com/ineelhere/shiny.emojirain" class="external-link">Star the repository</a> - 🐦 Share it on social media - 💬 Tell us how you’re using it in the discussions - 📢 Recommend it to your colleagues</p>
+<p>Your support helps us improve the package and reach more developers! 🚀</p>
+<hr>
+<p><em>Inspired by festive web animations and celebration effects, Built with ❤️ for the R Shiny community</em></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

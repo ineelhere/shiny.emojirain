@@ -20,33 +20,29 @@ character vector of emoji strings ready to use with
 [`emoji_shower_ui()`](https://ineelhere.github.io/shiny.emojirain/reference/emoji_shower_ui.md).
 Available presets:
 
-- `christmas`: Holiday-themed emojis (🎄 Christmas tree, 🎅 Santa, ⛄
-  snowman, 🎁 gifts, 🔔 bells, ✨ sparkles, ❄️ snowflakes, 🎊 confetti)
+- `christmas`: Holiday-themed emojis (Christmas tree, Santa, snowman,
+  gifts, bells, sparkles, snowflakes, confetti)
 
-- `halloween`: Spooky-themed emojis (🎃 pumpkin, 👻 ghost, 🦇 bat, 🕷️
-  spider, 💀 skull, 🧛 vampire, 🧙 wizard, 🕯️ candle)
+- `halloween`: Spooky-themed emojis (pumpkin, ghost, bat, spider, skull,
+  vampire, wizard, candle)
 
-- `birthday`: Party-themed emojis (🎂 cake, 🎈 balloon, 🎉 party popper,
-  🎊 confetti, 🎁 gift, ⭐ star, 🌟 star, 🎀 ribbon)
+- `birthday`: Party-themed emojis (cake, balloon, party popper,
+  confetti, gift, star, shining star, ribbon)
 
-- `spring`: Spring-themed emojis (🌸 cherry blossom, 🦋 butterfly, 🌻
-  sunflower, 🌺 hibiscus, 🌷 tulip, 🌼 daisy, 🌹 rose, 🐝 bee)
+- `spring`: Spring-themed emojis (cherry blossom, butterfly, sunflower,
+  hibiscus, tulip, daisy, rose, bee)
 
-- `newyear`: New Year-themed emojis (🎆 fireworks, 🎇 sparkler, ✨
-  sparkles, 🎉 party popper, 🥂 champagne, ⭐ star, 🌟 star, 🎊
-  confetti)
+- `newyear`: New Year-themed emojis (fireworks, sparkler, sparkles,
+  party popper, champagne, star, shining star, confetti)
 
-- `love`: Love/Valentine-themed emojis (❤️ red heart, 💕 two hearts, 💖
-  sparkling heart, 💗 growing heart, 🌹 rose, 💐 bouquet, 💝 gift heart,
-  💞 revolving hearts)
+- `love`: Love/Valentine-themed emojis (red heart, two hearts, sparkling
+  heart, growing heart, rose, bouquet, gift heart, revolving hearts)
 
-- `success`: Success/achievement-themed emojis (🏆 trophy, 🥇 gold
-  medal, 🎖️ medal, ⭐ star, 🌟 star, 💎 gem, 👏 clapping hands, 🎯
-  target)
+- `success`: Success/achievement-themed emojis (trophy, gold medal,
+  medal, star, shining star, gem, clapping hands, target)
 
-- `party`: General party/celebration-themed emojis (🎉 party popper, 🎊
-  confetti, 🎈 balloon, 🎁 gift, 🥳 party face, 🍾 champagne, 🎆
-  fireworks, ✨ sparkles)
+- `party`: General party/celebration-themed emojis (party popper,
+  confetti, balloon, gift, party face, champagne, fireworks, sparkles)
 
 ## Details
 
@@ -74,7 +70,7 @@ Example:
     emoji_shower_ui(emojis = mixed)
 
     # Extend a preset
-    extended <- c(emoji_presets()$birthday, "🍰", "🧁", "🍾")
+    extended <- c(emoji_presets()$birthday, "cake", "cupcake", "champagne")
     emoji_shower_ui(emojis = extended)
 
 ## Examples

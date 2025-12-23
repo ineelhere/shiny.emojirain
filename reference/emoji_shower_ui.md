@@ -17,7 +17,12 @@ emoji_shower_ui(
   spin_speed = NULL,
   particle_count = 15,
   burst_count = 8,
-  image_size = 32
+  image_size = 32,
+  z_index = 9999,
+  opacity = 1,
+  min_size = 20,
+  max_size = 35,
+  wind = 0
 )
 ```
 
@@ -26,13 +31,13 @@ emoji_shower_ui(
 - emojis:
 
   Character vector of emoji characters or image URLs to display.
-  Defaults to Christmas emojis. Use
+  Defaults to Christmas emojis (if NULL). Use
   [`emoji_presets()`](https://ineelhere.github.io/shiny.emojirain/reference/emoji_presets.md)
   for pre-made collections or provide your own custom emojis. Supports:
-  Unicode emoji characters (e.g., "🎉", "🎄"), web image URLs (http://,
-  https://), data URIs, local file paths, and files with extensions
-  (.jpg, .png, .gif, .webp, .svg). Emojis will be randomly selected from
-  this vector during animation.
+  Unicode emoji characters (e.g., actual emoji symbols), web image URLs
+  (http://, https://), data URIs, local file paths, and files with
+  extensions (.jpg, .png, .gif, .webp, .svg). Emojis will be randomly
+  selected from this vector during animation.
 
 - trigger:
 
@@ -62,8 +67,8 @@ emoji_shower_ui(
   Numeric or NULL. Rotation speed in degrees per animation frame.
   Controls the spin effect applied to particles. Set to a numeric value
   (recommended: 1-5) to enable rotation, or NULL to disable rotation
-  (default). Higher values create faster spins. Works great with emojis
-  like 💫, ⭐, 🌟.
+  (default). Higher values create faster spins. Works great with
+  spinning or star emojis.
 
 - particle_count:
 
@@ -86,28 +91,48 @@ emoji_shower_ui(
   range: 16-256 pixels. Default: 32. Emoji characters scale
   automatically; this only affects external images.
 
+- z_index:
+
+  Numeric. CSS z-index for the animation layer. Default: 9999. Ensure
+  this is high enough to appear on top of other elements.
+
+- opacity:
+
+  Numeric. Opacity of the particles (0.0 to 1.0). Default: 1.
+
+- min_size:
+
+  Numeric. Minimum font size for emoji particles in pixels. Default: 20.
+
+- max_size:
+
+  Numeric. Maximum font size for emoji particles in pixels. Default: 35.
+
+- wind:
+
+  Numeric. Horizontal drift bias. Positive values blow right, negative
+  left. Default: 0.
+
 ## Value
 
-A Shiny tag (head tag) with embedded HTML and JavaScript code that
-initializes the emoji shower animation. This is meant to be included in
-your Shiny UI definition.
+A Shiny tag list containing the necessary HTML dependencies and
+initialization script.
 
 ## Details
 
 ### Rendering and Performance
 
-The shower is rendered as a fixed overlay (z-index: 9999) that covers
-the entire viewport without interfering with page interactions
-(pointer-events: none). All DOM elements are automatically cleaned up
-after animation completes, ensuring no memory leaks or lingering
-elements.
+The shower is rendered as a fixed overlay that covers the entire
+viewport without interfering with page interactions (pointer-events:
+none). All DOM elements are automatically cleaned up after animation
+completes, ensuring no memory leaks or lingering elements.
 
 ### Content Types Supported
 
 The function supports three types of content:
 
 - **Emojis**: Unicode emoji characters ("🎉", "🎄", "❤️", etc.) Font
-  size varies between 20-35px for visual variety.
+  size varies between `min_size` and `max_size` for visual variety.
 
 - **Web Images**: URLs starting with "http://", "https://", or "data:"
   URIs. Perfect for custom branding or special images. Uses the
@@ -123,7 +148,7 @@ Particles start at the top (y = -50) and fall downward with:
 
 - Vertical velocity determined by `fall_speed`
 
-- Horizontal drift from random velocities (-0.3 to 0.3 per frame)
+- Horizontal drift from random velocities plus `wind` bias
 
 - Optional rotation at the rate specified by `spin_speed`
 
@@ -137,6 +162,30 @@ and
 [`emit_shower()`](https://ineelhere.github.io/shiny.emojirain/reference/emit_shower.md)
 to trigger showers from server-side events.
 
+## Note
+
+### Experimental Feature: External Image Support
+
+The ability to render external images (JPEG, PNG, GIF, WebP, SVG) is
+currently available as an **experimental feature**. While functional, be
+aware that:
+
+- **Asynchronous Loading**: External images load asynchronously.
+  Depending on network conditions and file size, images may require
+  additional time to render after the animation begins. For optimal
+  results, use appropriately sized images (32-128px recommended for the
+  `image_size` parameter).
+
+- **Reliability Considerations**: Image rendering success may vary based
+  on network latency, CORS policies of the image host, browser caching
+  behavior, and server response times.
+
+**Recommendation**: For production environments requiring guaranteed
+visual consistency, use Unicode emoji characters instead of external
+image files. Emojis render immediately without external dependencies and
+provide superior reliability across all user sessions. If using external
+images, consider implementing fallback emojis for enhanced robustness.
+
 ## Examples
 
 ``` r
@@ -149,27 +198,15 @@ ui <- fluidPage(
   h1("Welcome!")
 )
 
-# With custom emojis
+# With custom emojis and wind
 ui <- fluidPage(
   emoji_shower_ui(
     emojis = emoji_presets()$halloween,
     trigger = NULL,
-    spin_speed = 3
+    spin_speed = 3,
+    wind = 0.2
   ),
   actionButton("trigger", "Halloween Party!")
-)
-
-# With image URLs
-ui <- fluidPage(
-  emoji_shower_ui(
-    emojis = c(
-      "https://example.com/star.png",
-      "https://example.com/heart.gif"
-    ),
-    image_size = 48,
-    trigger = NULL
-  ),
-  actionButton("trigger", "Image Shower!")
 )
 } # }
 ```
