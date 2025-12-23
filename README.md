@@ -20,6 +20,7 @@ ___
 
 # [LIVE DEMO](ttps://ineelhere-shiny-emojirain.share.connect.posit.cloud/)
 **Experience the package in action** with this **RShiny** application - https://ineelhere-shiny-emojirain.share.connect.posit.cloud/
+
 ## 📋 Table of Contents
 
 - [Features](#-features)
