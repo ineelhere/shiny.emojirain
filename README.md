@@ -17,6 +17,7 @@ Transform your Shiny apps with eye-catching, customizable animations that deligh
 
 > **Give this project a ⭐ if you find it useful!** Your support helps us reach more developers and continue improving the package.
 ___
+
 # [LIVE DEMO](ttps://ineelhere-shiny-emojirain.share.connect.posit.cloud/)
 **Experience the package in action** with this **RShiny** application - https://ineelhere-shiny-emojirain.share.connect.posit.cloud/
 ## 📋 Table of Contents
