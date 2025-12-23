@@ -10,3 +10,4 @@
 ^regen_docs\.R$
 ^pkgdown/
 app.R
+manifest.json
