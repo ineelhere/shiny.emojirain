@@ -4,12 +4,11 @@
 [![R-CMD-check](https://github.com/ineelhere/shiny.emojirain/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ineelhere/shiny.emojirain/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-(https://github.com/ineelhere/shiny.emojirain)
 [![GitHub stars](https://img.shields.io/github/stars/ineelhere/shiny.emojirain?style=social)](https://github.com/ineelhere/shiny.emojirain/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/ineelhere/shiny.emojirain?style=social)](https://github.com/ineelhere/shiny.emojirain/network/members)
 [![GitHub issues](https://img.shields.io/github/issues/ineelhere/shiny.emojirain?color=red)](https://github.com/ineelhere/shiny.emojirain/issues)
 [![Website](https://img.shields.io/badge/Documentation-online-informational)](https://ineelhere.github.io/shiny.emojirain)
-[![Visitors](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fineelhere%2Fshiny.emojirain&count_bg=%2379C0FF&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=visitors&edge_flat=false)](https://hits.seeyoufarm.com)
+[![Visitors](https://hits.sh/github.com/ineelhere/shiny.emojirain.svg?label=Visitors&style=flat-square)](https://hits.sh/github.com/ineelhere/shiny.emojirain/)
 <!-- badges: end -->
 
 **shiny.emojirain** brings delightful emoji shower animations to your R Shiny applications. Perfect for holidays, celebrations, milestones, and special events! 🎉
@@ -17,7 +16,9 @@
 Transform your Shiny apps with eye-catching, customizable animations that delight users and add a touch of whimsy to your data dashboards, interactive tools, and web applications.
 
 > **Give this project a ⭐ if you find it useful!** Your support helps us reach more developers and continue improving the package.
-
+___
+# [LIVE DEMO](ttps://ineelhere-shiny-emojirain.share.connect.posit.cloud/)
+**Experience the package in action** with this **RShiny** application - https://ineelhere-shiny-emojirain.share.connect.posit.cloud/
 ## 📋 Table of Contents
 
 - [Features](#-features)
