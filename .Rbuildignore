@@ -8,3 +8,4 @@
 ^check\.R$
 ^regen\.R$
 ^regen_docs\.R$
+^pkgdown/
